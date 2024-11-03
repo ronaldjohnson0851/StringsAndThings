@@ -77,7 +77,7 @@ public class StringsAndThings {
         return count1 == count2 ;
 
     }
-    }
+
 
     /**
      * We'll say that a lowercase 'g' in a string is "happy" if there is another 'g' immediately to its left or right.
@@ -87,13 +87,16 @@ public class StringsAndThings {
      *           gHappy("xxggyygxx") // Should return  false
      */
     public Boolean gIsHappy(String input){
-        boolean happy = true;
         for (int i = 0; i < input.length() -1; i++) {
-            if (input.charAt(i) == 'gg') {
-                return ha
+            if (input.charAt(i) == 'g') {
+                if ((i > 0 && input.charAt(i - 1) == 'g') || (i < input.length() - 1 && input.charAt(i + 1) == 'g')) {
+                    continue;
+                } else {
+                    return false;
+                }
             }
         }
-        return null;
+           return true;
     }
 
 
@@ -105,7 +108,12 @@ public class StringsAndThings {
      *            countTriple("a") // Should return 0
      */
     public Integer countTriple(String input){
-
-        return null;
+        int count = 0;
+        for (int i = 0; i < input.length() - 2; i++) {
+            if (input.charAt(i) == input.charAt(i + 1) && input.charAt(i) == input.charAt(i + 2)) {
+                count++;
+            }
+        }
+        return count;
     }
 }
